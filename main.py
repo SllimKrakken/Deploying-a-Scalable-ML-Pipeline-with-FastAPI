@@ -32,10 +32,10 @@ encoder = load_model(path)
 path = '/home/tmills/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/model/model.pkl'
 model = load_model(path)
 
-# TODO: create a RESTful API using FastAPI
+
 app = FastAPI()
 
-# TODO: create a GET on the root giving a welcome message
+
 @app.get("/")
 async def get_root():
     """ Say hello!"""
