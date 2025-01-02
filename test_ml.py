@@ -8,7 +8,7 @@ from ml.model import (
     train_model,
 )
 
-def check_columns():
+def test_check_columns():
     #Check if number of Columns are the same number of columns coming from the Source File
     path = './data/census.csv'
     data = pd.read_csv(path)
@@ -17,19 +17,20 @@ def check_columns():
     assert columns == columns_read
 
 
-def model_inference_test():    
-    #Testing the inference of the current model    
-    X = np.random.rand(20, 5)
-    y = np.random.randint(2, size=30)
+def test_model_inference():
+    # Testing the inference of the current model
+    X = np.random.rand(20, 5)  # 20 samples, 5 features
+    y = np.random.randint(2, size=20)  # 20 binary target labels
     model_test = train_model(X, y)
     y_predictions = inference(model_test, X)
     assert y.shape == y_predictions.shape
 
 
 
-def algorithm_test():
+
+def test_algorithm():
     #Tests for using the RandomForestClassifier algorithm
     Xtrain = np.array([[0, 1], [1, 0], [0, 0], [1, 1]])
     ytrain = np.array([0, 1, 0, 1])  
     model_algorithm = train_model(Xtrain, ytrain)
-    assert isinstance(model_algorithm, RandomForestClassifier), "RandomForestClassifier is not used for the model"
+    assert isinstance(model_algorithm, RandomForestClassifier), "RandomForestClassifier is not used for this model"
